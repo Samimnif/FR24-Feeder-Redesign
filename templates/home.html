@@ -1,11 +1,77 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+    <script>
+        // Function to fetch and update flights data
+        function refreshFlights() {
+            fetch('/flights', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ /* Your request data, if needed */ })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Update the page with the new data
+                    const flightsContainer = document.querySelector('#flights-container');
+                    flightsContainer.innerHTML = ''; // Clear the existing data
+
+                    if (Object.keys(data).length === 0) {
+                        // Display the "Empty Nest" icon
+                        const emptyNestIcon = document.createElement('i');
+                        emptyNestIcon.classList.add('bi', 'bi-airplane');
+                        emptyNestIcon.style.fontFamily = '100px';
+                        flightsContainer.appendChild(emptyNestIcon);
+                    }
+                    else {
+                        for (const [key, flight] of Object.entries(data)) {
+                            const card = document.createElement('div');
+                            card.classList.add('col-md-4');
+                            card.innerHTML = `
+                            <div class="card ${flight[16] === '' ? 'border-warning' : ''}">
+                                <h5 class="card-header">${flight[16] === '' ? 'N/A' : flight[16]}</h5>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <div class="row">
+                                            <div class="col"><b>ICAO:</b> ${key}</div>
+                                            <div class="col"><b>SQW:</b> ${flight[6]}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col"><b>Latitude:</b> ${flight[1]}</div>
+                                            <div class="col"><b>Longitude:</b> ${flight[2]}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col"><b>Altitude:</b> ${flight[4]}</div>
+                                            <div class="col"><b>Speed:</b> ${flight[3]}</div>
+                                        </div>
+                                    </p>
+                                    <a href="https://www.flightradar24.com/${flight[16]}" target="_blank"
+                                        class="btn btn-primary">FR24</a>
+                                </div>
+                            </div>
+                        `;
+                            flightsContainer.appendChild(card);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+
+        // Call the refreshFlights function initially and set an interval to refresh every X seconds
+        refreshFlights();
+        setInterval(refreshFlights, 6000);
+    </script>
 
 </head>
 
@@ -53,6 +119,36 @@
             </div>
         </div>
     </nav>
+    <br>
+    <div class="container">
+        <div class="row" id="flights-container">
+            {% for key, flight in flights.items() %}
+            <div class="col-md-4">
+                <div class="card {% if flight[16] == "" %}border-warning{% endif %}">
+                    <h5 class="card-header">{% if flight[16] == "" %}N/A{% else %}{{ flight[16] }}{% endif %}</h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                        <div class="row">
+                            <div class="col"><b>ICAO:</b> {{ key }}</div>
+                            <div class="col"><b>SQW:</b> {{ flight[6] }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><b>Latitude:</b> {{ flight[1] }} </div>
+                            <div class="col"><b>Longitude:</b> {{ flight[2] }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><b>Altitude:</b> {{ flight[4] }}</div>
+                            <div class="col"><b>Speed:</b> {{ flight[3] }}</div>
+                        </div>
+                        </p>
+                        <a href="https://www.flightradar24.com/{{ flight[16]}}" target="_blank"
+                            class="btn btn-primary">FR24</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
 </body>
 
