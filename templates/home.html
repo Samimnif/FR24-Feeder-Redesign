@@ -63,9 +63,26 @@
                             <div style="padding-top:10px">
                                 <div class="card ${flight[16] === '' ? 'border-warning' : ''}">
                                     <!--<img src="/static/airplane-engines.svg" class="img-fluid rounded-start" alt="...">-->
-                                    <h5 class="card-header">${flight[16] === '' ? 'N/A' : flight[16]}</h5>
+                                    <h5 class="card-header">
+                                        <div class="row">
+                                            <div class="col-sm-4"><b>${flight[16] === '' ? 'N/A' : flight[16]}</b></div>
+                                            <div class="col">${flight[17] === undefined ? '' : flight[17]} ${flight[20] === undefined ? '' : `<img src="/static/flags/4x3/${flight[20]}.svg" alt="flag" width="auto" height="15">`}</div>
+                                            <div class="col-3">
+                                                <h6>
+                                                    <div class="row">
+                                                    <div class="col">${flight[18] === undefined ? '' : `<span class="badge text-bg-secondary">${flight[18]}</span>`}</div>
+                                                    <div class="col">${flight[19] === undefined ? '' : `<span class="badge text-bg-success">${flight[19]}</span>`}</div>
+                                                    </div>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </h5>
                                     <div class="card-body">
                                         <p class="card-text">
+                                        <!--<div class="row">
+                                            <div class="col"><b>Registration:</b> ${flight[17]}</div>
+                                            <div class="col"><b>:</b></div>
+                                        </div>-->
                                         <div class="row">
                                             <div class="col"><b>ICAO:</b> ${key}</div>
                                             <div class="col"><b>SQW:</b> ${flight[6]}</div>
@@ -83,7 +100,7 @@
                                             <div class="col"><b>Vertical S:</b> ${flight[15]} fpm</div>
                                         </div>
                                         </p>
-                                        <a href="https://www.flightradar24.com/${flight[16]}" target="_blank" class="btn btn-primary ${flight[16] === '' ? 'disabled' : ''}"><img src="/static/fr24.png" alt="fa" width="auto" height="24"> FR24</a>
+                                        <a href="https://www.flightradar24.com/${flight[16]}" target="_blank" class="btn btn-primary ${flight[16] === '' ? 'disabled' : ''}"><img src="/static/fr24.png" alt="fa" width="auto" height="24"></a>
                                         <a href="http://flightaware.com/live/modes/${key}/redirect" target="_blank"
                                             class="btn btn-primary ${flight[16] === '' ? 'disabled' : ''}"><img src="/static/flightaware-logo.png" alt="fa" width="auto" height="24"></a>
                                         <a href="https://planefinder.net/flight/${flight[16]}" target="_blank" class="btn btn-primary ${flight[16] === '' ? 'disabled' : ''}"><img src="/static/pf-logo.svg" alt="pf" width="auto" height="24"></a>

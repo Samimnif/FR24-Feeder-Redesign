@@ -1,0 +1,245 @@
+prefix,Country,Alpha-2
+YA,Afghanistan,AF
+ZA,Albania,AL
+7T,Algeria,DZ
+C3,Andorra,AD
+D2,Angola,AO
+VP-A,Anguilla,AI
+V2,Antigua and Barbuda,AG
+LV,Argentina,AR
+LQ,Argentina,AR
+EK,Armenia,AM
+P4,Aruba,AW
+VH,Australia,AU
+OE,Austria,AT
+4K,Azerbaijan,AZ
+C6,Bahamas,BS
+A9C,Bahrain,BH
+S2,Bangladesh,BD
+8P,Barbados,BB
+EW,Belarus,BY
+OO,Belgium,BE
+V3,Belize,BZ
+TY,Benin,BJ
+VP-B,Bermuda,BM
+VQ-B,Bermuda,BM
+A5,Bhutan,BT
+CP,Bolivia,BO
+E7,Bosnia and Herzegovina,BA
+A2,Botswana,BW
+PP,Brazil,BR
+PR,Brazil,BR
+PS,Brazil,BR
+PT,Brazil,BR
+PU,Brazil,BR
+VP-L,British Virgin Islands,VG
+V8,Brunei,BN
+LZ,Bulgaria,BG
+XT,Burkina Faso,BF
+9U,Burundi,BI
+XU,Cambodia,KH
+TJ,Cameroon,CM
+C,Canada,CA
+D4,Cape Verde,CV
+VP-C,Cayman Islands,KY
+VQ-C,Cayman Islands,KY
+TL,Central African Republic,CF
+TT,Chad,TD
+CC,Chile,CL
+B,China,CN
+HJ,Colombia,CO
+HK,Colombia,CO
+D6,Comoros,KM
+TN,Congo,CG
+9S,"Congo, the Democratic Republic of the",CD
+9T,"Congo, the Democratic Republic of the",CD
+E5,Cook Islands,CK
+TI,Costa Rica,CR
+9A,Croatia,HR
+CU,Cuba,CU
+5B,Cyprus,CY
+OK,Czech Republic,CZ
+OY,Denmark,DK
+J2,Djibouti,DJ
+J7,Dominica,DM
+HI,Dominican Republic,DO
+4W,Timor-Leste,TL
+HC,Ecuador,EC
+SU,Egypt,EG
+YS,El Salvador,SV
+3C,Equatorial Guinea,GQ
+E3,Eritrea,ER
+ES,Estonia,EE
+3DC,Eswatini,SZ
+ET,Ethiopia,ET
+VP-F,Falkl and Islands,FK
+SeeDenmark,Faroe Islands,FO
+DQ,Fiji,FJ
+OH,Finland,FI
+F,France,FR
+F-O,French Guiana,GF
+F-O,French Polynesia,PF
+TR,Gabon,GA
+C5,Gambia,GM
+4L,Georgia,GE
+D,Germany,DE
+9G,Ghana,GH
+VP-G,Gibraltar,GI
+SX,Greece,GR
+SeeDenmark,Greenland,GL
+J3,Grenada,GD
+TG,Guatemala,GT
+2,Guernsey,GG
+3X,Guinea,GN
+J5,Guinea-Bissau,GW
+8R,Guyana,GY
+HH,Haiti,HT
+HR,Honduras,HN
+B-H,Hong Kong,HK
+B-K,Hong Kong,HK
+B-L,Hong Kong,HK
+HA,Hungary,HU
+TF,Iceland,IS
+VT,India,IN
+PK,Indonesia,ID
+EP,Iran,IR
+YI,Iraq,IQ
+EI,Ireland,IE
+EJ,Ireland,IE
+M,Isle of Man,IM
+4X,Israel,IL
+I,Italy,IT
+TU,Côte d'Ivoire,CI
+6Y,Jamaica,JM
+JA,Japan,JP
+ZJ,Jersey,JE
+JY,Jordan,JO
+4YB,Iraq,IQ
+UP,Kazakhstan,KZ
+5Y,Kenya,KE
+T3,Kiribati,KI
+Z6,Kosovo,XK
+9K,Kuwait,KW
+EX,Kyrgyzstan,KG
+RDPL,Laos,LA
+YL,Latvia,LV
+OD,Lebanon,LB
+7P,Lesotho,LS
+A8,Liberia,LR
+5A,Libya,LY
+HB,Liechtenstein,LI
+LY,Lithuania,LT
+LX,Luxembourg,LU
+B-M,Macau,MO
+5R,Madagascar,MG
+7Q,Malawi,MW
+9M,Malaysia,MY
+8Q,Maldives,MV
+TZ,Mali,ML
+9H,Malta,MT
+V7,Marshall Islands,MH
+F-O,Martinique,MQ
+5T,Mauritania,MR
+3B,Mauritius,MU
+XA,Mexico,MX
+XB,Mexico,MX
+XC,Mexico,MX
+V6,Micronesia,FM
+ER,Moldova,MD
+3A,Monaco,MC
+JU,Mongolia,MN
+4O,Montenegro,ME
+VP-M,Montserrat,MS
+CN,Morocco,MA
+C9,Mozambique,MZ
+XY,Myanmar,MM
+V5,Namibia,NA
+C2,Nauru,NR
+9N,Nepal,NP
+PH,Netherlands,NL
+PJ,Netherlands,NL
+ZK,New Zealand,NZ
+ZL,New Zealand,NZ
+ZM,New Zealand,NZ
+YN,Nicaragua,NI
+5U,Niger,NE
+5N,Nigeria,NG
+P,North Korea,KP
+Z3,North Macedonia,MK
+LN,Norway,NO
+A4O,Oman,OM
+AP,Pakistan,PK
+SU-Y,Palestine,PS
+E4,Palestine,PS
+HP,Panama,PA
+P2,Papua New Guinea,PG
+ZP,Paraguay,PY
+OB,Peru,PE
+RP,Philippines,PH
+SP,Poland,PL
+SN,Poland,PL
+CR,Portugal,PT
+CS,Portugal,PT
+A7,Qatar,QA
+F-O,Réunion,RE
+YR,Romania,RO
+RA,Russia,RU
+RF,Russia,RU
+9XR,Rwanda,RW
+VQ-H,Saint Helena /Ascension,SH
+V4,Saint Kitts and Nevis,KN
+J6,Saint Lucia,LC
+J8,Saint Vincent and the Grenadines,VC
+5W,Samoa,WS
+T7,San Marino,SM
+S9,São Tomé and Príncipe,ST
+HZ,Saudi Arabia,SA
+6V,Senegal,SN
+6W,Senegal,SN
+YU,Serbia,RS
+S7,Seychelles,SC
+9L,Sierra Leone,SL
+9V,Singapore,SG
+OM,Slovakia,SK
+S5,Slovenia,SI
+H4,Solomon Islands,SB
+6O,Somalia,SO
+ZS,South Africa,ZA
+ZT,South Africa,ZA
+ZU,South Africa,ZA
+HL,South Korea,KR
+Z8,South Sudan,SS
+EC,Spain,ES
+EM,Spain,ES
+4R,Sri Lanka,LK
+ST,Sudan,SD
+PZ,Suriname,SR
+SE,Sweden,SE
+HB,Switzerland,CH
+YK,Syria,SY
+B,Taiwan,TW
+EY,Tajikistan,TJ
+5H,Tanzania,TZ
+HS,Thailand,TH
+5V,Togo,TG
+A3,Tonga,TO
+9Y,Trinidad and Tobago,TT
+TS,Tunisia,TN
+TC,Turkey,TR
+EZ,Turkmenistan,TM
+VQ-T,Turks and Caicos,TC
+T2,Tuvalu,TV
+5X,Uganda,UG
+UR,Ukraine,UA
+A6,United Arab Emirates,AE
+G,United Kingdom,GB
+4U,United Nations,UN
+N,United States,US
+CX,Uruguay,UY
+UK,Uzbekistan,UZ
+YJ,Vanuatu,VU
+YV,Venezuela,VE
+VN,Vietnam,VN
+7O,Yemen,YE
+9J,Zambia,ZM
+Z,Zimbabwe,ZW
