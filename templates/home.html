@@ -8,23 +8,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <style>
-            /* Define the spinning animation */
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(-360deg);
-                }
+    <style>
+        /* Define the spinning animation */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
-    
-            /* Apply the spinning animation to the icon */
-            .spinning-icon {
-                animation: spin 2s linear infinite; /* Adjust duration as needed */
+
+            100% {
+                transform: rotate(-360deg);
             }
-        </style>
+        }
+
+        /* Apply the spinning animation to the icon */
+        .spinning-icon {
+            animation: spin 2s linear infinite;
+            /* Adjust duration as needed */
+        }
+    </style>
     <script>
+        //var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        //var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) { return new bootstrap.Tooltip(tooltipTriggerEl) })
         // Function to fetch and update flights data
         function refreshFlights() {
             fetch('/flights', {
@@ -67,14 +71,14 @@
                                         <div class="row">
                                             <div class="col-sm-4"><b>${flight[16] === '' ? 'N/A' : flight[16]}</b></div>
                                             <div class="col">${flight[17] === undefined ? '' : flight[17]} ${flight[20] === undefined ? '' : `<img src="/static/flags/4x3/${flight[20]}.svg" alt="flag" width="auto" height="15">`}</div>
-                                            <div class="col-3">
+                                            <!--<div class="col-3">-->
                                                 <h6>
-                                                    <div class="row">
-                                                    <div class="col">${flight[18] === undefined ? '' : `<span class="badge text-bg-secondary">${flight[18]}</span>`}</div>
-                                                    <div class="col">${flight[19] === undefined ? '' : `<span class="badge text-bg-success">${flight[19]}</span>`}</div>
+                                                    <div class="">
+                                                        <!--<div class="col">-->${flight[18] === undefined ? '' : `<span class="badge text-bg-secondary">${flight[18]}</span>`}<!--</div>-->
+                                                        <!--<div class="col">-->${flight[19] === undefined ? '' : `<span class="badge text-bg-success">${flight[19]}</span>`}<!--</div>-->
                                                     </div>
                                                 </h6>
-                                            </div>
+                                            <!--</div>-->
                                         </div>
                                     </h5>
                                     <div class="card-body">
@@ -88,8 +92,8 @@
                                             <div class="col"><b>SQW:</b> ${flight[6]}</div>
                                         </div>
                                         <div class="row">
-                                            <div class="col"><b>Latitude:</b> ${flight[1] === 0 ? 'N/A' : flight[1]+'°'}</div>
-                                            <div class="col"><b>Longitude:</b> ${flight[2] === 0 ? 'N/A' : flight[2]+'°'}</div>
+                                            <div class="col"><b>Latitude:</b> ${flight[1] === 0 ? 'N/A' : flight[1] + '°'}</div>
+                                            <div class="col"><b>Longitude:</b> ${flight[2] === 0 ? 'N/A' : flight[2] + '°'}</div>
                                         </div>
                                         <div class="row">
                                             <div class="col"><b>Altitude:</b> ${flight[4]} ft</div>
@@ -100,7 +104,7 @@
                                             <div class="col"><b>Vertical S:</b> ${flight[15]} fpm</div>
                                         </div>
                                         </p>
-                                        <a href="https://www.flightradar24.com/${flight[16]}" target="_blank" class="btn btn-primary ${flight[16] === '' ? 'disabled' : ''}"><img src="/static/fr24.png" alt="fa" width="auto" height="24"></a>
+                                        <a href="https://www.flightradar24.com/${flight[16]}" target="_blank" class="btn btn-primary ${flight[16] === '' ? 'disabled' : ''}"><img src="/static/logo.png" alt="fa" width="95" height="24"></a>
                                         <a href="http://flightaware.com/live/modes/${key}/redirect" target="_blank"
                                             class="btn btn-primary ${flight[16] === '' ? 'disabled' : ''}"><img src="/static/flightaware-logo.png" alt="fa" width="auto" height="24"></a>
                                         <a href="https://planefinder.net/flight/${flight[16]}" target="_blank" class="btn btn-primary ${flight[16] === '' ? 'disabled' : ''}"><img src="/static/pf-logo.svg" alt="pf" width="auto" height="24"></a>
@@ -207,5 +211,12 @@
     </div>
     <br><br>
 </body>
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
 
 </html>
