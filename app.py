@@ -51,6 +51,15 @@ combined_data = {**csv1_data, **csv2_data}
 app = Flask(__name__)
 url = 'http://fr24.local:8754/flights.json'
 
+def add_suggestion(icao,r,t,des):
+    with open('db/missing-plane-data.json', 'r') as file:
+        data = json.load(file)
+    icao_exists = any(item['icao'] == icao for item in data)
+    if not icao_exists:
+        data.append({"icao":icao, "r":r, "t":t,"des":des})
+        with open('db/missing-plane-data.json', 'w') as file:
+            json.dump(data, file, indent=4)
+
 def get_alpha(registration_code):
     global csv3_data
     # Split the registration code to extract the prefix
@@ -76,16 +85,19 @@ def get_data():
     data = json.loads(response.read())
     for i in data:
         print(i.upper())
+        data[i].append(data[i][16][0:3])#17 Callsign ICAO ID
         if i.upper() in combined_data:
-            data[i].append(combined_data[i.upper()].get('r', ''))#17 Registration code
-            data[i].append(combined_data[i.upper()].get('t', ''))#18 Model Number
-            data[i].append(combined_data[i.upper()].get('desc', ''))#19 Aircraft type
-            if data[i][17] != '':
-                prefixCode = get_alpha(data[i][17])
+            data[i].append(combined_data[i.upper()].get('r', ''))#18 Registration code
+            data[i].append(combined_data[i.upper()].get('t', ''))#19 Model Number
+            data[i].append(combined_data[i.upper()].get('desc', ''))#20 Aircraft type
+            if data[i][18] != '':
+                prefixCode = get_alpha(data[i][18])
                 if prefixCode != None:
-                    data[i].append(prefixCode[0].lower())#20 Code Alpha
-                    data[i].append(prefixCode[1])#21 Country
+                    data[i].append(prefixCode[0].lower())#21 Code Alpha
+                    data[i].append(prefixCode[1])#22 Country
                 print(prefixCode)
+            if data[i][17] == '' or data[i][18] == '' or data[i][19] == '':
+                add_suggestion(i,data[i][18], data[i][19], data[i][20])
         else:
             print(f"Couldn't find this ICAO: {i}")
     print(data)

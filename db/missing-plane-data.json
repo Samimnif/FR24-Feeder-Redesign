@@ -1,0 +1,1868 @@
+[
+    {
+        "icao": "c055d6",
+        "r": "C-GGND",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060bc",
+        "r": "C-GKQL",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c08565",
+        "r": "C-GYNK",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05f8f",
+        "r": "C-GKEW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "aa3646",
+        "r": "N757YX",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "495268",
+        "r": "CS-TSH",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c01e28",
+        "r": "C-FLKX",
+        "t": "FA7X",
+        "des": ""
+    },
+    {
+        "icao": "c04fd7",
+        "r": "C-GEGC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c058cb",
+        "r": "C-GHQG",
+        "t": "BE30",
+        "des": ""
+    },
+    {
+        "icao": "c0635f",
+        "r": "C-GLQK",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05ed8",
+        "r": "C-GJXV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c07721",
+        "r": "C-GTCY",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c043b7",
+        "r": "C-FZQS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c066dd",
+        "r": "C-GMYU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a2ca64",
+        "r": "N27908",
+        "t": "B788",
+        "des": ""
+    },
+    {
+        "icao": "c040c5",
+        "r": "C-FYNS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c058be",
+        "r": "C-GHPT",
+        "t": "B788",
+        "des": ""
+    },
+    {
+        "icao": "c066b6",
+        "r": "C-GMXH",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06724",
+        "r": "C-GNBN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c067ae",
+        "r": "C-GNGV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05efe",
+        "r": "C-GJZH",
+        "t": "B752",
+        "des": ""
+    },
+    {
+        "icao": "c0307a",
+        "r": "C-FSJH",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c01c52",
+        "r": "C-FKSV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0481b",
+        "r": "C-GBHY",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0440e",
+        "r": "C-FZUB",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c01754",
+        "r": "C-FIVR",
+        "t": "B773",
+        "des": ""
+    },
+    {
+        "icao": "c01551",
+        "r": "C-FIBW",
+        "t": "B737",
+        "des": ""
+    },
+    {
+        "icao": "c0208a",
+        "r": "C-FMIJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06a9b",
+        "r": "C-GOJQ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c01d72",
+        "r": "C-FLDX",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060c4",
+        "r": "C-GKQT",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06da2",
+        "r": "C-GPNL",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060c1",
+        "r": "C-GKQQ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0407b",
+        "r": "C-FYKW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a1a2a2",
+        "r": "",
+        "t": "N204UA",
+        "des": "B772"
+    },
+    {
+        "icao": "c010cb",
+        "r": "C-FGJI",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0799a",
+        "r": "C-GUBH",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c03493",
+        "r": "C-FTXQ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "48ae26",
+        "r": "SP-LSG",
+        "t": "B789",
+        "des": ""
+    },
+    {
+        "icao": "4bca63",
+        "r": "TC-RSC",
+        "t": "LJ45",
+        "des": ""
+    },
+    {
+        "icao": "c036b1",
+        "r": "C-FUSM",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06a83",
+        "r": "C-GOIS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c04413",
+        "r": "C-FZUG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "400774",
+        "r": "G-VIIW",
+        "t": "B772",
+        "des": ""
+    },
+    {
+        "icao": "c0173f",
+        "r": "C-FIUW",
+        "t": "B773",
+        "des": ""
+    },
+    {
+        "icao": "c01a61",
+        "r": "C-FJZS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05edf",
+        "r": "C-GJYC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c00b9d",
+        "r": "C-FEKI",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0506b",
+        "r": "C-GELU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "49530b",
+        "r": "CS-TXK",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c051d0",
+        "r": "C-GEZN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "4b191c",
+        "r": "HB-JNG",
+        "t": "B77W",
+        "des": ""
+    },
+    {
+        "icao": "c0466c",
+        "r": "C-GARJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c080db",
+        "r": "C-GWUS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a486b3",
+        "r": "N391CA",
+        "t": "CRJ7",
+        "des": "L2J"
+    },
+    {
+        "icao": "c00e5c",
+        "r": "C-FFLJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a2dd59",
+        "r": "N284FE",
+        "t": "B763",
+        "des": "L2J"
+    },
+    {
+        "icao": "a09702",
+        "r": "N137UP",
+        "t": "A306",
+        "des": ""
+    },
+    {
+        "icao": "c051cc",
+        "r": "C-GEZJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c03001",
+        "r": "C-FSEQ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c030f7",
+        "r": "C-FSOC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05bcb",
+        "r": "C-GITU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06927",
+        "r": "C-GNVI",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05ea6",
+        "r": "C-GJVX",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c08851",
+        "r": "C-GZQE",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0635a",
+        "r": "C-GLQF",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "89618f",
+        "r": "A6-EEP",
+        "t": "A388",
+        "des": ""
+    },
+    {
+        "icao": "c001eb",
+        "r": "C-FASW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a69bcd",
+        "r": "N525DA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c00da8",
+        "r": "C-FFEL",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a9bf4b",
+        "r": "N727TW",
+        "t": "B752",
+        "des": ""
+    },
+    {
+        "icao": "89617e",
+        "r": "A6-EGF",
+        "t": "B77W",
+        "des": ""
+    },
+    {
+        "icao": "c0884e",
+        "r": "C-GZQB",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05056",
+        "r": "C-GEKZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05f09",
+        "r": "C-GJZS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05060",
+        "r": "C-GELJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c07d20",
+        "r": "C-GVJZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0636e",
+        "r": "C-GLQZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05f0e",
+        "r": "C-GJZX",
+        "t": "B752",
+        "des": ""
+    },
+    {
+        "icao": "c06364",
+        "r": "C-GLQP",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06361",
+        "r": "C-GLQM",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a57eb0",
+        "r": "N453QS",
+        "t": "E55P",
+        "des": "L2J"
+    },
+    {
+        "icao": "c0635e",
+        "r": "C-GLQJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06357",
+        "r": "C-GLQC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0248b",
+        "r": "C-FNVU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06fd3",
+        "r": "C-GQJA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060b3",
+        "r": "C-GKQC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c00e93",
+        "r": "C-FFNM",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c010ea",
+        "r": "C-FGKN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06e9b",
+        "r": "C-GPXA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a6d27b",
+        "r": "N539GJ",
+        "t": "",
+        "des": "L2J"
+    },
+    {
+        "icao": "c03da9",
+        "r": "C-FXJC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "491d87",
+        "r": "CS-GLG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05f08",
+        "r": "C-GJZR",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060b2",
+        "r": "C-GKQB",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0405a",
+        "r": "C-FYJP",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a8603e",
+        "r": "N639M",
+        "t": "F2TH",
+        "des": "L2J"
+    },
+    {
+        "icao": "c017d7",
+        "r": "C-FJAS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0662c",
+        "r": "C-GMRZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c07973",
+        "r": "C-GTZU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060b4",
+        "r": "C-GKQD",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060b8",
+        "r": "C-GKQH",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060c6",
+        "r": "C-GKQV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c03fa3",
+        "r": "C-FYCO",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c02fe4",
+        "r": "C-FSDN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a356db",
+        "r": "N314NB",
+        "t": "A319",
+        "des": "L2J"
+    },
+    {
+        "icao": "a55bcd",
+        "r": "N444ZW",
+        "t": "CRJ2",
+        "des": "L2J"
+    },
+    {
+        "icao": "ac705a",
+        "r": "N900NB",
+        "t": "F900",
+        "des": ""
+    },
+    {
+        "icao": "c04a77",
+        "r": "C-GCFE",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06365",
+        "r": "C-GLQQ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0635b",
+        "r": "C-GLQG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "ac7ede",
+        "r": "N904JP",
+        "t": "S22T",
+        "des": "L1P"
+    },
+    {
+        "icao": "c055d8",
+        "r": "C-GGNF",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a34a95",
+        "r": "N311AN",
+        "t": "BE60",
+        "des": "L2P"
+    },
+    {
+        "icao": "c060b5",
+        "r": "C-GKQE",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060b6",
+        "r": "C-GKQF",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "acbf03",
+        "r": "N920JS",
+        "t": "",
+        "des": "L3J"
+    },
+    {
+        "icao": "c078ff",
+        "r": "C-GTVI",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06800",
+        "r": "C-GNJZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "484f71",
+        "r": "PH-AKA",
+        "t": "A333",
+        "des": ""
+    },
+    {
+        "icao": "c00dce",
+        "r": "C-FFFX",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c027b4",
+        "r": "C-FPAX",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c04fc9",
+        "r": "C-GEFO",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a63e46",
+        "r": "N501GJ",
+        "t": "",
+        "des": "L2J"
+    },
+    {
+        "icao": "c06e49",
+        "r": "C-GPTW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060b9",
+        "r": "C-GKQI",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060bb",
+        "r": "C-GKQK",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c00ae5",
+        "r": "C-FEDG",
+        "t": "LJ60",
+        "des": ""
+    },
+    {
+        "icao": "c08670",
+        "r": "C-GYXR",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0855e",
+        "r": "C-GYND",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c2b599",
+        "r": "130612",
+        "t": "C30J",
+        "des": ""
+    },
+    {
+        "icao": "a0ba4e",
+        "r": "N146PQ",
+        "t": "CRJ9",
+        "des": "L2J"
+    },
+    {
+        "icao": "c035bf",
+        "r": "C-FUJE",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c066f0",
+        "r": "C-GMZN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060ca",
+        "r": "C-GKQZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c050ae",
+        "r": "C-GEOJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c08452",
+        "r": "C-GYCV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a3fb48",
+        "r": "N356BZ",
+        "t": "E135",
+        "des": "L2J"
+    },
+    {
+        "icao": "c0481c",
+        "r": "C-GBHZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05d3c",
+        "r": "C-GJHZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060bd",
+        "r": "C-GKQM",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a69869",
+        "r": "N524GJ",
+        "t": "",
+        "des": "L2J"
+    },
+    {
+        "icao": "c0105d",
+        "r": "C-FGFC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05ef7",
+        "r": "C-GJZA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05ed9",
+        "r": "C-GJXW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "ae056d",
+        "r": "86-0016",
+        "t": "C5",
+        "des": ""
+    },
+    {
+        "icao": "a0191e",
+        "r": "N105UW",
+        "t": "A320",
+        "des": "L2J"
+    },
+    {
+        "icao": "c05ea2",
+        "r": "C-GJVT",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a8e78e",
+        "r": "N673HB",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c02998",
+        "r": "C-FPTN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05edd",
+        "r": "C-GJYA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a2b691",
+        "r": "N274NN",
+        "t": "E75L",
+        "des": "L2J"
+    },
+    {
+        "icao": "c0884f",
+        "r": "C-GZQC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "ac872f",
+        "r": "N906TR",
+        "t": "LJ60",
+        "des": "L2J"
+    },
+    {
+        "icao": "c03003",
+        "r": "C-FSES",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060c7",
+        "r": "C-GKQW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0196c",
+        "r": "C-FJQH",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a7a08a",
+        "r": "N59053",
+        "t": "B764",
+        "des": ""
+    },
+    {
+        "icao": "c04051",
+        "r": "C-FYJG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "89618a",
+        "r": "A6-EEK",
+        "t": "A388",
+        "des": ""
+    },
+    {
+        "icao": "c08545",
+        "r": "C-GYME",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a1fcfd",
+        "r": "N227WG",
+        "t": "CL60",
+        "des": ""
+    },
+    {
+        "icao": "c03bf7",
+        "r": "C-FWSK",
+        "t": "B737",
+        "des": ""
+    },
+    {
+        "icao": "c05030",
+        "r": "C-GEJN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "4bb0ea",
+        "r": "TC-LGJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c04135",
+        "r": "C-FYSA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "aaee43",
+        "r": "N803NW",
+        "t": "A333",
+        "des": ""
+    },
+    {
+        "icao": "c01e90",
+        "r": "C-FLOX",
+        "t": "B752",
+        "des": ""
+    },
+    {
+        "icao": "a585e4",
+        "r": "N455NJ",
+        "t": "LJ45",
+        "des": "L2J"
+    },
+    {
+        "icao": "c086a8",
+        "r": "C-GYZV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c058b4",
+        "r": "C-GHPJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06363",
+        "r": "C-GLQO",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "4a91af",
+        "r": "SE-DMO",
+        "t": "A21N",
+        "des": ""
+    },
+    {
+        "icao": "406814",
+        "r": "G-VGEM",
+        "t": "A333",
+        "des": ""
+    },
+    {
+        "icao": "8963cf",
+        "r": "A6-BLB",
+        "t": "B789",
+        "des": ""
+    },
+    {
+        "icao": "c05ef9",
+        "r": "C-GJZC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0635c",
+        "r": "C-GLQH",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "abd7d1",
+        "r": "N862RW",
+        "t": "E170",
+        "des": "L2J"
+    },
+    {
+        "icao": "c060c2",
+        "r": "C-GKQR",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "ada699",
+        "r": "N979RP",
+        "t": "E170",
+        "des": "L2J"
+    },
+    {
+        "icao": "ad5ac8",
+        "r": "N96LA",
+        "t": "F900",
+        "des": "L3J"
+    },
+    {
+        "icao": "c034e1",
+        "r": "C-FUAQ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0227b",
+        "r": "C-FNBM",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0784c",
+        "r": "C-GTOL",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05ee5",
+        "r": "C-GJYI",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06709",
+        "r": "C-GNAM",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c065ed",
+        "r": "C-GMPO",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c00e89",
+        "r": "C-FFNC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "50801f",
+        "r": "UR-82072",
+        "t": "A124",
+        "des": ""
+    },
+    {
+        "icao": "c079a1",
+        "r": "C-GUBO",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c03cc3",
+        "r": "C-FXAG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "3c70cb",
+        "r": "D-ALFK",
+        "t": "B77L",
+        "des": ""
+    },
+    {
+        "icao": "3949f4",
+        "r": "F-GSPU",
+        "t": "B772",
+        "des": ""
+    },
+    {
+        "icao": "c0583f",
+        "r": "C-GHKW",
+        "t": "A333",
+        "des": ""
+    },
+    {
+        "icao": "c01ec5",
+        "r": "C-FLQY",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c00b7d",
+        "r": "C-FEJC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c008d7",
+        "r": "C-FDJA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a07dc8",
+        "r": "N13013",
+        "t": "B78X",
+        "des": "L2J"
+    },
+    {
+        "icao": "c05eb6",
+        "r": "C-GJWN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c053f6",
+        "r": "C-GFUR",
+        "t": "A333",
+        "des": ""
+    },
+    {
+        "icao": "c054e3",
+        "r": "C-GGDU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c07971",
+        "r": "C-GTZS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0611f",
+        "r": "C-GKUG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "3c4a05",
+        "r": "D-ABPE",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c080dc",
+        "r": "C-GWUT",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c055e9",
+        "r": "C-GGNW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "06a1e8",
+        "r": "A7-BFK",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a8cadb",
+        "r": "N666DN",
+        "t": "B752",
+        "des": "L2J"
+    },
+    {
+        "icao": "3c7a44",
+        "r": "D-ANRD",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c02966",
+        "r": "C-FPRP",
+        "t": "LJ35",
+        "des": ""
+    },
+    {
+        "icao": "a913d6",
+        "r": "N684UA",
+        "t": "B763",
+        "des": "L2J"
+    },
+    {
+        "icao": "400683",
+        "r": "G-VIIK",
+        "t": "B772",
+        "des": ""
+    },
+    {
+        "icao": "c0193b",
+        "r": "C-FJOK",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "ab4e94",
+        "r": "N828AA",
+        "t": "B789",
+        "des": "L2J"
+    },
+    {
+        "icao": "ac03ef",
+        "r": "N87303",
+        "t": "E75L",
+        "des": "L2J"
+    },
+    {
+        "icao": "a68d44",
+        "r": "N521GJ",
+        "t": "",
+        "des": "L2J"
+    },
+    {
+        "icao": "495304",
+        "r": "CS-TXD",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c030bb",
+        "r": "C-FSLU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a8c121",
+        "r": "N663UA",
+        "t": "B763",
+        "des": ""
+    },
+    {
+        "icao": "c07c7b",
+        "r": "C-GVDQ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0797b",
+        "r": "C-GUAC",
+        "t": "LJ35",
+        "des": ""
+    },
+    {
+        "icao": "3c64ee",
+        "r": "D-AIGN",
+        "t": "A343",
+        "des": ""
+    },
+    {
+        "icao": "485b43",
+        "r": "PH-BKC",
+        "t": "B78X",
+        "des": ""
+    },
+    {
+        "icao": "485b44",
+        "r": "PH-BKD",
+        "t": "B78X",
+        "des": ""
+    },
+    {
+        "icao": "407798",
+        "r": "G-XWBB",
+        "t": "A35K",
+        "des": ""
+    },
+    {
+        "icao": "c05ee1",
+        "r": "C-GJYE",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c02ed9",
+        "r": "C-FRTG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "3c4a04",
+        "r": "D-ABPD",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c023bb",
+        "r": "C-FNNU",
+        "t": "B77W",
+        "des": ""
+    },
+    {
+        "icao": "abd018",
+        "r": "N860NW",
+        "t": "A332",
+        "des": ""
+    },
+    {
+        "icao": "a05629",
+        "r": "N12006",
+        "t": "B78X",
+        "des": "L2J"
+    },
+    {
+        "icao": "39d2a2",
+        "r": "F-HUVC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a9d86c",
+        "r": "N733YX",
+        "t": "E75L",
+        "des": "L2J"
+    },
+    {
+        "icao": "c06a7b",
+        "r": "C-GOIK",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "440c69",
+        "r": "OE-LCL",
+        "t": "A332",
+        "des": ""
+    },
+    {
+        "icao": "424b2a",
+        "r": "M-NINE",
+        "t": "F900",
+        "des": ""
+    },
+    {
+        "icao": "3949f9",
+        "r": "F-GSPZ",
+        "t": "B772",
+        "des": ""
+    },
+    {
+        "icao": "c0583a",
+        "r": "C-GHKR",
+        "t": "A333",
+        "des": ""
+    },
+    {
+        "icao": "a11bc6",
+        "r": "N17015",
+        "t": "B78X",
+        "des": "L2J"
+    },
+    {
+        "icao": "ac291f",
+        "r": "N883BM",
+        "t": "B788",
+        "des": "L2J"
+    },
+    {
+        "icao": "740822",
+        "r": "JY-BAB",
+        "t": "B788",
+        "des": ""
+    },
+    {
+        "icao": "c06a87",
+        "r": "C-GOIW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "aa4ee9",
+        "r": "N763YX",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c01732",
+        "r": "C-FIUJ",
+        "t": "B772",
+        "des": ""
+    },
+    {
+        "icao": "c05858",
+        "r": "C-GHLV",
+        "t": "B763",
+        "des": ""
+    },
+    {
+        "icao": "a7b8a1",
+        "r": "N597NN",
+        "t": "CRJ9",
+        "des": "L2J"
+    },
+    {
+        "icao": "c038ac",
+        "r": "C-FVLZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "acc3f7",
+        "r": "N921XJ",
+        "t": "CRJ9",
+        "des": "L2J"
+    },
+    {
+        "icao": "a305aa",
+        "r": "N294PQ",
+        "t": "CRJ9",
+        "des": "L2J"
+    },
+    {
+        "icao": "ac71dd",
+        "r": "N9002U",
+        "t": "A319",
+        "des": "L2J"
+    },
+    {
+        "icao": "c03064",
+        "r": "C-FSIL",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c02ee7",
+        "r": "C-FRTU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c07e32",
+        "r": "C-GVUN",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06a7f",
+        "r": "C-GOIO",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "440652",
+        "r": "OE-ISN",
+        "t": "GLF5",
+        "des": ""
+    },
+    {
+        "icao": "a91b44",
+        "r": "N686UA",
+        "t": "B763",
+        "des": "L2J"
+    },
+    {
+        "icao": "a4189f",
+        "r": "N363NB",
+        "t": "A319",
+        "des": "L2J"
+    },
+    {
+        "icao": "c06a75",
+        "r": "C-GOIE",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06035",
+        "r": "C-GKLG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c07eda",
+        "r": "C-GWAZ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c056d2",
+        "r": "C-GGWV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c08853",
+        "r": "C-GZQG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c07fb1",
+        "r": "C-GWJG",
+        "t": "B737",
+        "des": ""
+    },
+    {
+        "icao": "c0174f",
+        "r": "C-FIVM",
+        "t": "B773",
+        "des": ""
+    },
+    {
+        "icao": "c038a7",
+        "r": "C-FVLU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c041b9",
+        "r": "C-FYXC",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0524c",
+        "r": "C-GFEH",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0109a",
+        "r": "C-FGHL",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c06a80",
+        "r": "C-GOIP",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "39cf11",
+        "r": "F-HTYR",
+        "t": "A359",
+        "des": ""
+    },
+    {
+        "icao": "c0219c",
+        "r": "C-FMSX",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c02ee9",
+        "r": "C-FRTW",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05086",
+        "r": "C-GEMV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c066f4",
+        "r": "C-GMZR",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c00ba7",
+        "r": "C-FEKS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a0be20",
+        "r": "N147QS",
+        "t": "GLEX",
+        "des": ""
+    },
+    {
+        "icao": "86831e",
+        "r": "JA742J",
+        "t": "B77W",
+        "des": ""
+    },
+    {
+        "icao": "ae4f13",
+        "r": "10-0219",
+        "t": "C17",
+        "des": ""
+    },
+    {
+        "icao": "4d0113",
+        "r": "LX-VCJ",
+        "t": "B748",
+        "des": ""
+    },
+    {
+        "icao": "c04811",
+        "r": "C-GBHO",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c08095",
+        "r": "C-GWSA",
+        "t": "B738",
+        "des": ""
+    },
+    {
+        "icao": "ab761e",
+        "r": "N838AM",
+        "t": "B39M",
+        "des": "L2J"
+    },
+    {
+        "icao": "896454",
+        "r": "A6-EQE",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c006d2",
+        "r": "C-FCPD",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a32f82",
+        "r": "N304PQ",
+        "t": "CRJ9",
+        "des": "L2J"
+    },
+    {
+        "icao": "c04082",
+        "r": "C-FYLD",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c025d2",
+        "r": "C-FOIJ",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "ac3f94",
+        "r": "N889DE",
+        "t": "GLF5",
+        "des": "L2J"
+    },
+    {
+        "icao": "c05bd2",
+        "r": "C-GIUB",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0501e",
+        "r": "C-GEIV",
+        "t": "GLF4",
+        "des": ""
+    },
+    {
+        "icao": "c00821",
+        "r": "C-FDCA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c055cd",
+        "r": "C-GGMU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05e4c",
+        "r": "C-GJSL",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060c3",
+        "r": "C-GKQS",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05004",
+        "r": "C-GEHV",
+        "t": "GL5T",
+        "des": ""
+    },
+    {
+        "icao": "c03c04",
+        "r": "C-FWSX",
+        "t": "B737",
+        "des": ""
+    },
+    {
+        "icao": "c03068",
+        "r": "C-FSIP",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05efc",
+        "r": "C-GJZF",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0484c",
+        "r": "C-GBJV",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c074aa",
+        "r": "C-GSER",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c05349",
+        "r": "C-GFOA",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c084b9",
+        "r": "C-GYGU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "aab6f8",
+        "r": "N79PG",
+        "t": "GA5C",
+        "des": "L2J"
+    },
+    {
+        "icao": "c001e4",
+        "r": "C-FASP",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "a9876e",
+        "r": "N713CK",
+        "t": "B742",
+        "des": ""
+    },
+    {
+        "icao": "c01993",
+        "r": "C-FJRU",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "acbfd6",
+        "r": "N920TC",
+        "t": "H25B",
+        "des": "L2J"
+    },
+    {
+        "icao": "c0563e",
+        "r": "C-GGRD",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060b7",
+        "r": "C-GKQG",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c060c9",
+        "r": "C-GKQY",
+        "t": "",
+        "des": ""
+    },
+    {
+        "icao": "c0636a",
+        "r": "C-GLQV",
+        "t": "",
+        "des": ""
+    }
+]
