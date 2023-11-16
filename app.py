@@ -103,6 +103,10 @@ def get_data():
     print(data)
     return data
 
+@app.errorhandler(404) 
+def not_found(e): 
+  return render_template("404.html") 
+
 @app.route('/')
 def index():
     return render_template('home.html', flights=get_data())
@@ -111,5 +115,12 @@ def index():
 def flights():
     return get_data()
 
+@app.route('/unidentified')
+def unidentified():
+    with open("db/missing-plane-data.json", 'r') as f:
+        ufo = json.load(f)
+    return render_template('contribute.html', ufo=ufo)
+
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port="80", debug=True)
+    #app.run(host="0.0.0.0",port="80", debug=True)
+    app.run(debug=True)
