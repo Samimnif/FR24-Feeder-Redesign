@@ -87,6 +87,7 @@ def get_data():
         print(i.upper())
         data[i].append(data[i][16][0:3])#17 Callsign ICAO ID
         if i.upper() in combined_data:
+            print(combined_data[i.upper()])
             data[i].append(combined_data[i.upper()].get('r', ''))#18 Registration code
             data[i].append(combined_data[i.upper()].get('t', ''))#19 Model Number
             data[i].append(combined_data[i.upper()].get('desc', ''))#20 Aircraft type
@@ -96,9 +97,10 @@ def get_data():
                     data[i].append(prefixCode[0].lower())#21 Code Alpha
                     data[i].append(prefixCode[1])#22 Country
                 print(prefixCode)
-            if data[i][17] == '' or data[i][18] == '' or data[i][19] == '':
+            if data[i][18] == '' or data[i][19] == '' or data[i][20] == '':
                 add_suggestion(i,data[i][18], data[i][19], data[i][20])
         else:
+            add_suggestion(i,'', '', '')
             print(f"Couldn't find this ICAO: {i}")
     print(data)
     return data
@@ -117,6 +119,7 @@ def flights():
 
 @app.route('/unidentified', methods=['GET', 'POST'])
 def unidentified():
+    global combined_data
     if request.method == 'POST':
         icao = request.form.get('icao')
         registration = request.form.get('registration')
@@ -134,6 +137,10 @@ def unidentified():
 
                 # Write the row directly
                 writer.writerow({'ICAO': icao, 'Registration': registration, 'Model': model, 'Aircraft Type': aircraft_type})
+                combined_data[icao.upper()] = {
+                'r': registration,
+                't': model,
+                'desc': aircraft_type}
                 # Remove the object from missing-plane-data.json
             with open("db/missing-plane-data.json", 'r') as f:
                 ufo = json.load(f)
