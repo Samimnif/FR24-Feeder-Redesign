@@ -115,8 +115,38 @@ def index():
 def flights():
     return get_data()
 
-@app.route('/unidentified')
+@app.route('/unidentified', methods=['GET', 'POST'])
 def unidentified():
+    if request.method == 'POST':
+        icao = request.form.get('icao')
+        registration = request.form.get('registration')
+        model = request.form.get('model')
+        aircraft_type = request.form.get('type')
+        print(icao, registration, model, aircraft_type)
+        
+        # Check for empty strings
+        if icao and registration and model and aircraft_type:
+            # Save the data to a CSV file
+            with open('db/contributions.csv', 'a+', newline='') as csvfile:
+                fieldnames = ['ICAO', 'Registration', 'Model', 'Aircraft Type']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                print("Writing to CSV:", {'ICAO': icao, 'Registration': registration, 'Model': model, 'Aircraft Type': aircraft_type})
+
+                # Write the row directly
+                writer.writerow({'ICAO': icao, 'Registration': registration, 'Model': model, 'Aircraft Type': aircraft_type})
+                # Remove the object from missing-plane-data.json
+            with open("db/missing-plane-data.json", 'r') as f:
+                ufo = json.load(f)
+
+            for plane in ufo:
+                if plane['icao'] == icao:
+                    ufo.remove(plane)
+                    break
+
+            # Write the updated data back to missing-plane-data.json
+            with open("db/missing-plane-data.json", 'w') as f:
+                json.dump(ufo, f, indent=2)
+
     with open("db/missing-plane-data.json", 'r') as f:
         ufo = json.load(f)
     return render_template('contribute.html', ufo=ufo)

@@ -85,23 +85,36 @@
                         <h3 class="card-header">{{ plane.icao }}</h3>
                         <div class="card-body">
                             <p class="card-text">
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label for="registration" class="form-label">Registration</label>
-                                    <input type="text" class="form-control {% if plane.r == "" %} is-invalid{% endif %}" id="registration" placeholder="Registration"
-                                        aria-label="Registration" value="{{ plane.r }}">
+                            <form action="/unidentified" method="post" id="form_{{ plane.icao }}">
+                                <input type="hidden" name="icao" value="{{ plane.icao }}">
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label for="registration" class="form-label">Registration</label>
+                                        <input type="text" name="registration"
+                                            class="form-control {% if plane.r == "" %} is-invalid{% endif %}"
+                                            id="registration" placeholder="registration" aria-label="registration"
+                                            value="{{ plane.r }}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="model" class="form-label">Model</label>
+                                        <input type="text" name="model"
+                                            class="form-control {% if plane.t == "" %} is-invalid{% endif %}" id="model"
+                                            placeholder="model" aria-label="model" value="{{ plane.t }}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="type" class="form-label">Type</label>
+                                        <input type="text" name="type"
+                                            class="form-control {% if plane.des == "" %} is-invalid{% endif %}"
+                                            id="type" placeholder="type" aria-label="type" value="{{ plane.des }}">
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <label for="model" class="form-label">Model</label>
-                                    <input type="text" class="form-control {% if plane.t == "" %} is-invalid{% endif %}" id="model" placeholder="Model" aria-label="Model"
-                                        value="{{ plane.t }}">
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary">submit</button>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <label for="type" class="form-label">Type</label>
-                                    <input type="text" class="form-control {% if plane.des == "" %} is-invalid{% endif %}" id="type" placeholder="Type" aria-label="Type"
-                                        value="{{ plane.des }}">
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
