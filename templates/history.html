@@ -26,7 +26,6 @@
             /* Adjust duration as needed */
         }
     </style>
-
 </head>
 
 <body>
@@ -43,7 +42,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-airplane-fill"
+                        <a class="nav-link" aria-current="page" href="/unidentified"><i class="bi bi-airplane-fill"
                                 style="padding-right: 5px;"></i>Unidentified</a>
                     </li>
                     <li class="nav-item">
@@ -71,55 +70,46 @@
                         <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                     </li>
                 </ul>
+                <!--
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                -->
             </div>
         </div>
     </nav>
     <br>
     <div class="container">
         <div class="row" id="flights-container">
-            <h2><i class="bi bi-radar" style="padding-right: 5px;"></i>Total UFOs: <b>{{ ufo|length }}</b></h2>
-            {% for plane in ufo %}
-            <div class="col-md-4">
-                <div style="padding-top:10px">
-                    <div class="card">
-                        <h3 class="card-header">{{ plane.icao }}</h3>
-                        <div class="card-body">
-                            <p class="card-text">
-                            <form action="/unidentified" method="post" id="form_{{ plane.icao }}">
-                                <input type="hidden" name="icao" value="{{ plane.icao }}">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <label for="registration" class="form-label">Registration</label>
-                                        <input type="text" name="registration"
-                                            class="form-control {% if plane.r == "" %} is-invalid{% endif %}"
-                                            id="registration" placeholder="registration" aria-label="registration"
-                                            value="{{ plane.r }}">
-                                    </div>
-                                    <div class="col">
-                                        <label for="model" class="form-label">Model</label>
-                                        <input type="text" name="model"
-                                            class="form-control {% if plane.t == "" %} is-invalid{% endif %}" id="model"
-                                            placeholder="model" aria-label="model" value="{{ plane.t }}">
-                                    </div>
-                                    <div class="col">
-                                        <label for="type" class="form-label">Type</label>
-                                        <input type="text" name="type"
-                                            class="form-control {% if plane.des == "" %} is-invalid{% endif %}"
-                                            id="type" placeholder="type" aria-label="type" value="{{ plane.des }}">
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-primary">submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">ICAO</th>
+                        <th scope="col">Time Stamp</th>
+                        <th scope="col">Call Sign</th>
+                        <th scope="col">Registration</th>
+                        <th scope="col">Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plane in planes %}
+                    <tr>
+                        <th scope="row">{{ plane.icao24 }}</th>
+                        <td>{{ plane.timestamp }}</td>
+                        <td>{{ plane.data[16] }}</td>
+                        <td>{{ plane.data[18] }}</td>
+                        <td>
+                            {% if plane.data[21] == '' %}
+                            <!-- Do nothing if the condition is true -->
+                            {% else %}
+                            <img src="/static/flags/4x3/{{ plane.data[21] }}.svg" alt="flag" width="auto" height="15">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
     <br><br>
