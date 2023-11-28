@@ -69,7 +69,7 @@
                                     <!--<img src="/static/airplane-engines.svg" class="img-fluid rounded-start" alt="...">-->
                                     <h5 class="card-header">
                                         <div class="row">
-                                            <div class="col"><b>${flight[17] === '' ? '<i class="bi bi-airplane" width="auto" height="30"></i>' : `<img src="https://www.flightaware.com/images/airline_logos/90p/${flight[17]}.png" alt="" width="auto" height="30">`} ${flight[16] === '' ? 'N/A' : flight[16]}</b></div>
+                                            <div class="col"><b>${flight[17] === '' ? '<i class="bi bi-airplane" width="auto" height="30"></i>' : `<img src="https://images.planefinder.net/api/logo-square/${flight[17]}/h/30" alt="" width="auto" height="30"><!--<img src="https://www.flightaware.com/images/airline_logos/90p/${flight[17]}.png" alt="" width="auto" height="30">-->`} ${flight[16] === '' ? 'N/A' : flight[16]}</b></div>
                                             <div class="col">${flight[18] === undefined ? '' : flight[18]} ${flight[21] === undefined ? '' : `<img src="/static/flags/4x3/${flight[21]}.svg" alt="flag" width="auto" height="15">`}</div>
                                             <!--<div class="col-3">--><!--</div>-->
                                         </div>

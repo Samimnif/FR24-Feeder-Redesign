@@ -47,12 +47,22 @@ def get_planes_last_hour():
     with sqlite3.connect(DATABASE) as connection:
         cursor = connection.cursor()
 
-        # Retrieve planes within the last hour
-        cursor.execute("SELECT * FROM plane_history WHERE timestamp BETWEEN ? AND ?", (start_time.strftime("%Y-%m-%d %H:%M:%S"), end_time.strftime("%Y-%m-%d %H:%M:%S")))
+        # Retrieve distinct planes within the last hour with first and last timestamps
+        cursor.execute("""
+            SELECT icao24, MIN(timestamp) as first_appeared, MAX(timestamp) as last_appeared, data
+            FROM plane_history
+            WHERE timestamp BETWEEN ? AND ?
+            GROUP BY icao24
+            ORDER BY first_appeared DESC
+        """, (start_time.strftime("%Y-%m-%d %H:%M:%S"), end_time.strftime("%Y-%m-%d %H:%M:%S")))
+
         planes_last_hour = cursor.fetchall()
 
     # Transform the data if needed (e.g., converting JSON strings back to dictionaries)
-    transformed_planes = [{'timestamp': row[0], 'icao24': row[1], 'data': json.loads(row[2])} for row in planes_last_hour]
+    transformed_planes = [
+        {'icao24': row[0], 'first_appeared': row[1], 'last_appeared': row[2], 'data': json.loads(row[3])}
+        for row in planes_last_hour
+    ]
 
     return transformed_planes
 
@@ -163,7 +173,10 @@ def get_data():
     data = json.loads(response.read())
     for i in data:
         #print(i.upper())
-        data[i].append(data[i][16][0:3])#17 Callsign ICAO ID
+        if data[i][16][0:3] != "PTR":
+            data[i].append(data[i][16][0:3])#17 Callsign ICAO ID
+        else:
+            data[i].append("POE")
         if i.upper() in combined_data:
             #print(combined_data[i.upper()])
             data[i].append(combined_data[i.upper()].get('r', ''))#18 Registration code
@@ -242,6 +255,6 @@ def unidentified():
     return render_template('contribute.html', ufo=ufo)
 
 if __name__ == '__main__':
-    #app.run(host="0.0.0.0",port="80", debug=True)
     create_table()
-    app.run(debug=True)
+    app.run(host="0.0.0.0",port="80", debug=True)
+    #app.run(debug=True)

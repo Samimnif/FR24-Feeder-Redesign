@@ -9,11 +9,12 @@ If you have FR24 Feeder on a raspberry pi and you are sharing your ADS-B data wi
 Still work in progress, but I wanted to show you a preview of the pages.
 #### Main Page
 When planes found in area
+![Main Page Demo 2](/_README_imgs/main_demo2.png)
 ![Main Page Demo](/_README_imgs/main_demo.png)
 <br>Empty Page (When no planes in area)
 ![Main Empty Page Demo](/_README_imgs/main_empty_demo.png)
 #### Unidentified Planes
 ![Unidentified Planes Page Demo](/_README_imgs/unidentified_demo.png)
 #### History
-![History Page Demo](/_README_imgs/history_demo.png)
+![History Page Demo](/_README_imgs/history_demo2.png)
 
