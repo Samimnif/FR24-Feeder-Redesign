@@ -8,24 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <style>
-        /* Define the spinning animation */
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(-360deg);
-            }
-        }
-
-        /* Apply the spinning animation to the icon */
-        .spinning-icon {
-            animation: spin 2s linear infinite;
-            /* Adjust duration as needed */
-        }
-    </style>
 </head>
 
 <body>
@@ -46,7 +28,7 @@
                                 style="padding-right: 5px;"></i>Unidentified</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/history"><i class="bi bi-clock-history"
+                        <a class="nav-link" href="/history"><i class="bi bi-clock-history"
                                 style="padding-right: 5px;"></i>History</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -67,7 +49,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about"><i class="bi bi-h-square" style="padding-right: 5px;"></i>About</a>
+                        <a class="nav-link active" href="/about"><i class="bi bi-h-square" style="padding-right: 5px;"></i>About</a>
                     </li>
                 </ul>
                 <!--
@@ -81,50 +63,44 @@
     </nav>
     <br>
     <div class="container">
-        <div class="row" id="flights-container">
-            <table class="table table-hover table-striped caption-top">
-                <caption><i class="bi bi-clock-history" style="padding-right: 5px;"></i>Last Hour History</caption>
-                <thead>
-                    <tr class="table-dark">
-                        <th scope="col">ICAO</th>
-                        <th scope="col">First Appeared</th>
-                        <th scope="col">Last Appeared</th>
-                        <th scope="col">Call Sign</th>
-                        <th scope="col">Airline Logo</th>
-                        <th scope="col">Registration</th>
-                        <th scope="col">Country</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for plane in planes %}
-                    <tr>
-                        <th scope="row">{{ plane.icao24 }}</th>
-                        <td>{{ plane.first_appeared }}</td>
-                        <td>{{ plane.last_appeared }}</td>
-                        <td>{{ plane.data[16] }}</td>
-                        <td>
-                            {% if plane.data[17]|striptags|trim == "" %}
-                            <!-- Do nothing if the condition is true -->
-                            {% else %}
-                            <img src="https://images.planefinder.net/api/logo/{{ plane.data[17] }}/h/30"
-                                alt="{{ plane.data[17] }} -Logo" width="auto" height="20">
-                        </td>
-                        {% endif %}
-                        <td>{{ plane.data[18] }}</td>
-                        <td>
-                            {% if plane.data[21]|striptags|trim == "" %}
-                            <!-- Do nothing if the condition is true -->
-                            {% else %}
-                            <img src="/static/flags/4x3/{{ plane.data[21] }}.svg" alt="{{ plane.data[21] }} flag"
-                                width="auto" height="25">
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <h1><i class="bi bi-h-square" style="padding-right: 5px;"></i>About Webserver</h1>
+        <p></p>
+        <div class="row">
+            <div class="col-lg-8">
+                <img src="/static/about_imgs/main_demo2.png" alt="Live Tracking Image" class="img-fluid mb-3">
+                <h2><i class="bi bi-rss" style="padding-right: 5px;"></i>Live Tracking</h2>
+                <p>
+                    Welcome to our live tracking feature, where you can see real-time information about airplanes in
+                    your
+                    area.
+                    <!-- You can add more content and customize this section as needed. -->
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-6">
+                <img src="/static/about_imgs/history_demo2.png" alt="History Image" class="img-fluid mb-3">
+                <h2><i class="bi bi-clock-history" style="padding-right: 5px;"></i>History</h2>
+                <p>
+                    Explore the history of planes in our radar field for the past hour. See where planes have been and
+                    track their movements.
+                    <!-- You can add more content and customize this section as needed. -->
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <img src="/static/about_imgs/unidentified_demo.png" alt="Unidentified Image" class="img-fluid mb-3">
+                <h2><i class="bi bi-radar" style="padding-right: 5px;"></i>Unidentified</h2>
+                <p>
+                    Discover planes with missing data such as registration and type. Help us improve our data and
+                    contribute to a more complete tracking experience.
+                    <!-- You can add more content and customize this section as needed. -->
+                </p>
+            </div>
         </div>
     </div>
+
     <br><br>
 </body>
 <script>
