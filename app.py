@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Response, jsonify
+from flask import Flask, render_template, request, redirect, url_for, Response, jsonify, send_file
 from apscheduler.schedulers.background import BackgroundScheduler
 import json
 import urllib.request, json
@@ -11,6 +11,9 @@ import signal
 import sys
 import sqlite3
 from datetime import datetime, timedelta
+from io import StringIO
+from xml.etree.ElementTree import Element, SubElement, tostring
+from xml.dom import minidom
 
 # SQLite database setup
 DATABASE = 'db/plane_history.db'
@@ -62,6 +65,30 @@ def get_planes_last_hour():
     transformed_planes = [
         {'icao24': row[0], 'first_appeared': row[1], 'last_appeared': row[2], 'data': json.loads(row[3])}
         for row in planes_last_hour
+    ]
+
+    return transformed_planes
+
+def get_planes_all():
+    end_time = datetime.now()
+    start_time = end_time - timedelta(hours=1)
+
+    with sqlite3.connect(DATABASE) as connection:
+        cursor = connection.cursor()
+
+        # Retrieve distinct planes within the last hour with first and last timestamps
+        cursor.execute("""
+            SELECT icao24, MIN(timestamp) as first_appeared, MAX(timestamp) as last_appeared, data
+            FROM plane_history
+            GROUP BY icao24
+            ORDER BY first_appeared DESC
+        """)
+        planes_history = cursor.fetchall()
+
+    # Transform the data if needed (e.g., converting JSON strings back to dictionaries)
+    transformed_planes = [
+        {'icao24': row[0], 'first_appeared': row[1], 'last_appeared': row[2], 'data': json.loads(row[3])}
+        for row in planes_history
     ]
 
     return transformed_planes
@@ -253,6 +280,64 @@ def unidentified():
     with open("db/missing-plane-data.json", 'r') as f:
         ufo = json.load(f)
     return render_template('contribute.html', ufo=ufo)
+
+@app.route('/export_data')
+def export_data():
+    
+    return render_template('export_data.html', planes=get_planes_all())
+
+@app.route('/download_csv')
+def download_csv():
+    
+    with sqlite3.connect(DATABASE) as connection:
+        cursor = connection.cursor()
+
+        # Fetch data from your SQLite table
+        cursor.execute("SELECT * FROM plane_history")
+        data = cursor.fetchall()
+
+        # Prepare CSV data
+        output = StringIO()
+        writer = csv.writer(output)
+        writer.writerow([i[0] for i in cursor.description])  # Write headers
+        writer.writerows(data)
+
+        # Set up response headers
+        output.seek(0)
+    return Response(
+            output,
+            mimetype='text/csv',
+            headers={"Content-disposition":
+                    "attachment; filename=your_data.csv"})
+
+@app.route('/download_xml')
+def download_xml():
+    # Connect to your SQLite database
+    with sqlite3.connect(DATABASE) as connection:
+        cursor = connection.cursor()
+
+        # Fetch data from your SQLite table
+        cursor.execute("SELECT * FROM plane_history")
+        data = cursor.fetchall()
+
+        # Create XML structure
+        root = Element('data')
+        for row in data:
+            entry = SubElement(root, 'entry')
+            for i, col in enumerate(row):
+                SubElement(entry, 'col%d' % i).text = str(col)
+
+        # Convert XML to string
+        xml_string = tostring(root, encoding='utf-8', method='xml')
+
+        # Prettify XML string (optional)
+        xml_string = minidom.parseString(xml_string).toprettyxml(indent="  ")
+
+    return Response(
+        xml_string,
+        mimetype="text/xml",
+        headers={"Content-disposition":
+                 "attachment; filename=data.xml"})
 
 @app.route('/about')
 def about():

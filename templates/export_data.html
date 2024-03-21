@@ -67,7 +67,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about"><i class="bi bi-h-square" style="padding-right: 5px;"></i>About</a>
+                        <a class="nav-link" href="/about"><i class="bi bi-h-square"
+                                style="padding-right: 5px;"></i>About</a>
                     </li>
                 </ul>
                 <!--
@@ -82,8 +83,20 @@
     <br>
     <div class="container">
         <div class="row" id="flights-container">
+            <div class="d-grid gap-2 d-md-block">
+                <form action="/download_csv">
+                    <button type="submit" class="btn btn-outline-success"><i class="bi bi-filetype-csv"
+                            style="padding-right: 5px;"></i>CSV</button>
+                </form>
+
+                <form action="/download_xml">
+                    <button type="submit" class="btn btn-outline-primary"><i class="bi bi-filetype-xml"
+                            style="padding-right: 5px;"></i>XML</button>
+                </form>
+            </div>
             <table class="table table-hover table-striped caption-top">
-                <caption><i class="bi bi-clock-history" style="padding-right: 5px;"></i>Last Hour History</caption>
+                <caption><i class="bi bi-clock-history" style="padding-right: 5px;"></i>Plane Interception History
+                </caption>
                 <thead>
                     <tr class="table-dark">
                         <th scope="col">ICAO</th>
