@@ -77,7 +77,57 @@
     <br>
     <div class="container">
         <div class="row" id="flights-container">
-            <h2><i class="bi bi-radar" style="padding-right: 5px;"></i>Total UFOs: <b>{{ ufo|length }}</b></h2>
+            <h2><i class="bi bi-radar" style="padding-right: 5px;"></i>Total UFOs: <b>{{ total }}</b></h2>
+            <div class="d-flex justify-content-center mt-4">
+                <nav>
+                    <ul class="pagination">
+                        <!-- Previous button -->
+                        {% if page > 1 %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('unidentified', page=page-1) }}">Previous</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">Previous</span>
+                        </li>
+                        {% endif %}
+            
+                        <!-- First page and ellipsis -->
+                        {% if 1 not in page_range %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('unidentified', page=1) }}">1</a></li>
+                        {% if 2 not in page_range %}
+                        <li class="page-item disabled"><span class="page-link">…</span></li>
+                        {% endif %}
+                        {% endif %}
+            
+                        <!-- Main page range -->
+                        {% for p in page_range %}
+                        <li class="page-item {% if p == page %}active{% endif %}">
+                            <a class="page-link" href="{{ url_for('unidentified', page=p) }}">{{ p }}</a>
+                        </li>
+                        {% endfor %}
+            
+                        <!-- Last page and ellipsis -->
+                        {% if total_pages not in page_range %}
+                        {% if total_pages - 1 not in page_range %}
+                        <li class="page-item disabled"><span class="page-link">…</span></li>
+                        {% endif %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('unidentified', page=total_pages) }}">{{ total_pages }}</a></li>
+                        {% endif %}
+            
+                        <!-- Next button -->
+                        {% if page < total_pages %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('unidentified', page=page+1) }}">Next</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">Next</span>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>            
             {% for plane in ufo %}
             <div class="col-md-4">
                 <div style="padding-top:10px">

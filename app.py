@@ -243,39 +243,50 @@ def history():
 @app.route('/unidentified', methods=['GET', 'POST'])
 def unidentified():
     global combined_data
+    per_page = 30  # You can tweak this
+    page = int(request.args.get('page', 1))
+
+    # Handle form submission
     if request.method == 'POST':
         icao = request.form.get('icao')
         registration = request.form.get('registration')
         model = request.form.get('model')
         aircraft_type = request.form.get('type')
-        #print(icao, registration, model, aircraft_type)
-        
-        # Check for empty strings
+
         if icao and registration and model and aircraft_type:
-            # Save the data to a CSV file
             with open('db/contributions.csv', 'a+', newline='') as csvfile:
                 fieldnames = ['ICAO', 'Registration', 'Model', 'Aircraft Type']
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                print("Writing to CSV:", {'ICAO': icao, 'Registration': registration, 'Model': model, 'Aircraft Type': aircraft_type})
-
-                # Write the row directly
                 writer.writerow({'ICAO': icao, 'Registration': registration, 'Model': model, 'Aircraft Type': aircraft_type})
                 combined_data[icao.upper()] = {
-                'r': registration,
-                't': model,
-                'desc': aircraft_type}
-                # Remove the object from missing-plane-data.json
+                    'r': registration,
+                    't': model,
+                    'desc': aircraft_type
+                }
+
+            # Remove from missing-plane-data.json
             with open("db/missing-plane-data.json", 'r') as f:
                 ufo = json.load(f)
-
-            for plane in ufo:
-                if plane['icao'] == icao:
-                    ufo.remove(plane)
-                    break
-
-            # Write the updated data back to missing-plane-data.json
+            ufo = [plane for plane in ufo if plane['icao'] != icao]
             with open("db/missing-plane-data.json", 'w') as f:
                 json.dump(ufo, f, indent=2)
+
+    # Load and paginate the data
+    with open("db/missing-plane-data.json", 'r') as f:
+        ufo = json.load(f)
+
+    total = len(ufo)
+    start = (page - 1) * per_page
+    end = start + per_page
+    paginated_ufo = ufo[start:end]
+
+    total_pages = (total + per_page - 1) // per_page  # ceiling division
+    # Generate page range: 2 before to 2 after current page, within bounds
+    start_range = max(1, page - 2)
+    end_range = min(total_pages, page + 2)
+    page_range = list(range(start_range, end_range + 1))
+
+    return render_template('contribute.html', ufo=paginated_ufo, page=page, total_pages=total_pages, page_range=page_range, total=total)
 
     with open("db/missing-plane-data.json", 'r') as f:
         ufo = json.load(f)
@@ -345,5 +356,5 @@ def about():
 
 if __name__ == '__main__':
     create_table()
-    app.run(host="0.0.0.0",port="80", debug=True)
+    app.run(host="0.0.0.0",port="3000", debug=True)
     #app.run(debug=True)
