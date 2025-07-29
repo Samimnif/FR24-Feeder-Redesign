@@ -60,6 +60,6 @@ for plane in data:
                 print("POST successful.", plane['icao'], plane['r'], plane['t'], plane['desc'])
             else:
                 print(f"POST failed. Status code: {response.status_code}")
-            sleep(5)
+            sleep(3.5)
         except:
             print("error in func")
