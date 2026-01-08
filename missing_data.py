@@ -21,7 +21,7 @@ def get_aircraft_registration(icao):
 
     response = requests.get(url, headers=headers)
     if response.status_code != 200:
-        print("Failed to load page.")
+        print("Failed to load page. REG")
         return None
 
     soup = BeautifulSoup(response.text, "html.parser")
@@ -41,7 +41,7 @@ def get_aircraft_type(aircraft_type):
 
     response = requests.get(url, headers=headers)
     if response.status_code != 200:
-        print("Failed to load page.")
+        print("Failed to load page. TYPE")
         return None
 
     soup = BeautifulSoup(response.text, "html.parser")
@@ -83,7 +83,7 @@ for plane in data:
                 'model': plane['t'],
                 'type': plane['desc']
             }
-            response = requests.post("http://127.0.0.1:3000/unidentified", data=sendData)
+            response = requests.post("http://192.168.68.85:3000/unidentified", data=sendData)#127.0.0.1
             if response.status_code == 200:
                 print("POST successful.", plane['icao'], plane['r'], plane['t'], plane['desc'])
             else:
