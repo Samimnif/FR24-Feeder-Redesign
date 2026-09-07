@@ -16,7 +16,8 @@ def get_aircraft_registration(icao):
     """
     url = f'https://globe.adsbexchange.com/?icao={icao}'
     headers = {
-        "User-Agent": "Mozilla/5.0"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9"
     }
 
     response = requests.get(url, headers=headers)
@@ -36,12 +37,13 @@ def get_aircraft_registration(icao):
 def get_aircraft_type(aircraft_type):
     url = f"https://learningzone.eurocontrol.int/ilp/customs/ATCPFDB/details.aspx?ICAO={aircraft_type}"
     headers = {
-        "User-Agent": "Mozilla/5.0"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9"
     }
 
     response = requests.get(url, headers=headers)
     if response.status_code != 200:
-        print("Failed to load page. TYPE")
+        print(f"Failed to load page. TYPE {response.status_code}")
         return None
 
     soup = BeautifulSoup(response.text, "html.parser")
@@ -55,12 +57,13 @@ def get_aircraft_type(aircraft_type):
 def get_aircraft_code(aircraft_reg):
     url = f"https://www.flightradar24.com/data/aircraft/{aircraft_reg}"
     headers = {
-        "User-Agent": "Mozilla/5.0"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9"
     }
 
     response = requests.get(url, headers=headers)
     if response.status_code != 200:
-        print("Failed to load page.")
+        print(f"Failed to load {aircraft_reg} page. {response.status_code}")
         return None
 
     soup = BeautifulSoup(response.text, "html.parser")
@@ -83,7 +86,7 @@ for plane in data:
                 'model': plane['t'],
                 'type': plane['desc']
             }
-            response = requests.post("http://192.168.68.85:3000/unidentified", data=sendData)#127.0.0.1
+            response = requests.post("http://127.0.0.1:3000/unidentified", data=sendData)#127.0.0.1
             if response.status_code == 200:
                 print("POST successful.", plane['icao'], plane['r'], plane['t'], plane['desc'])
             else:

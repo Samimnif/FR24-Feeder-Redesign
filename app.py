@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 from io import StringIO
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom import minidom
+from missing_data import *
 
 # SQLite database setup
 DATABASE = 'db/plane_history.db'
@@ -136,7 +137,7 @@ combined_data = {**csv1_data, **csv2_data}
 
 
 app = Flask(__name__)
-url = 'http://fr24.local:8754/flights.json'
+url = 'http://fr-pi24.local:8754/flights.json'
 
 # Initialize the BackgroundScheduler
 scheduler = BackgroundScheduler()
@@ -216,7 +217,12 @@ def get_data():
                     data[i].append(prefixCode[1])#22 Country
                 #print(prefixCode)
             if data[i][18] == '' or data[i][19] == '' or data[i][20] == '':
-                add_suggestion(i,data[i][18], data[i][19], data[i][20])
+                p_code = data[i][19]
+                p_type = data[i][20]
+                # if data[i][18] != '':
+                #     p_code = get_aircraft_code(data[i][18])
+                #     p_type = get_aircraft_type(p_code)[0]
+                add_suggestion(i,data[i][18], p_code, p_type)
         else:
             add_suggestion(i,'', '', '')
             print(f"Couldn't find this ICAO: {i}")
