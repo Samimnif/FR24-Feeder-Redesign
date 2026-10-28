@@ -1,12 +1,8 @@
 import json
-from termios import ICANON
 
 import requests
 from bs4 import BeautifulSoup
 from time import sleep
-
-with open('db/missing-plane-data.json', 'r') as file:
-    data = json.load(file)
 
 def get_aircraft_registration(icao):
     """
@@ -72,43 +68,46 @@ def get_aircraft_code(aircraft_reg):
 
     return type[3].get_text(strip=True)
 
-# print(get_aircraft_type('A319'))
-# print((get_aircraft_code('c-fyns')))
+if __name__ == '__main__':
+    with open('db/missing-plane-data.json', 'r') as file:
+        data = json.load(file)
+    # print(get_aircraft_type('A319'))
+    # print((get_aircraft_code('c-fyns')))
 
-for plane in data:
-    if plane['r'] != "":
-        try:
-            plane['t'] = get_aircraft_code(plane['r'])
-            plane['desc'] = get_aircraft_type(plane['t'])[0]
-            sendData = {
-                'icao': plane['icao'],
-                'registration': plane['r'],
-                'model': plane['t'],
-                'type': plane['desc']
-            }
-            response = requests.post("http://127.0.0.1:3000/unidentified", data=sendData)#127.0.0.1
-            if response.status_code == 200:
-                print("POST successful.", plane['icao'], plane['r'], plane['t'], plane['desc'])
-            else:
-                print(f"POST failed. Status code: {response.status_code}")
-            sleep(3.5)
-        except:
-            print("error in func")
-#     else:
-#         print("No Reg:", plane['icao'])
-#         try:
-#             plane['r'], plane['t'], plane['desc'] = get_aircraft_registration(plane['icao'])
-#             sendData = {
-#                 'icao': plane['icao'],
-#                 'registration': plane['r'],
-#                 'model': plane['t'],
-#                 'type': plane['desc']
-#             }
-#             response = requests.post("http://127.0.0.1:3000/unidentified", data=sendData)
-#             if response.status_code == 200:
-#                 print("POST successful.", plane['icao'], plane['r'], plane['t'], plane['desc'])
-#             else:
-#                 print(f"POST failed. Status code: {response.status_code}")
-#             sleep(3.5)
-#         except:
-#             print("error in func")
+    for plane in data:
+        if plane['r'] != "":
+            try:
+                plane['t'] = get_aircraft_code(plane['r'])
+                plane['desc'] = get_aircraft_type(plane['t'])[0]
+                sendData = {
+                    'icao': plane['icao'],
+                    'registration': plane['r'],
+                    'model': plane['t'],
+                    'type': plane['desc']
+                }
+                response = requests.post("http://127.0.0.1:3000/unidentified", data=sendData)#127.0.0.1
+                if response.status_code == 200:
+                    print("POST successful.", plane['icao'], plane['r'], plane['t'], plane['desc'])
+                else:
+                    print(f"POST failed. Status code: {response.status_code}")
+                sleep(3.5)
+            except:
+                print("error in func")
+    #     else:
+    #         print("No Reg:", plane['icao'])
+    #         try:
+    #             plane['r'], plane['t'], plane['desc'] = get_aircraft_registration(plane['icao'])
+    #             sendData = {
+    #                 'icao': plane['icao'],
+    #                 'registration': plane['r'],
+    #                 'model': plane['t'],
+    #                 'type': plane['desc']
+    #             }
+    #             response = requests.post("http://127.0.0.1:3000/unidentified", data=sendData)
+    #             if response.status_code == 200:
+    #                 print("POST successful.", plane['icao'], plane['r'], plane['t'], plane['desc'])
+    #             else:
+    #                 print(f"POST failed. Status code: {response.status_code}")
+    #             sleep(3.5)
+    #         except:
+    #             print("error in func")

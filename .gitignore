@@ -1,2 +1,3 @@
 ./db/plane_history.db
+./db/aircraft.db
 ./db/missing-plane-data.json
