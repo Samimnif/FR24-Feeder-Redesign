@@ -1,0 +1,361 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+        }
+        .spinning-icon { animation: spin 2s linear infinite; }
+
+        .search-panel { border: 0; box-shadow: 0 2px 10px rgba(0, 0, 0, .08); }
+        .search-panel .nav-pills .nav-link { color: #344e41; }
+        .search-panel .nav-pills .nav-link.active { background-color: #588157; color: #fff; }
+        .btn-accent { background-color: #588157; border-color: #588157; color: #fff; }
+        .btn-accent:hover, .btn-accent:focus { background-color: #3a5a40; border-color: #3a5a40; color: #fff; }
+        .preset.active { background-color: #588157; border-color: #588157; color: #fff; }
+        .form-label { font-size: .85rem; font-weight: 600; color: #495057; margin-bottom: .25rem; }
+        .results-bar { gap: .75rem; }
+        .results-table td, .results-table th { vertical-align: middle; white-space: nowrap; }
+        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        .empty-state i { font-size: 96px; color: #588157; }
+        .filter-chip { font-weight: 500; }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand mb-0 h1" href="/">
+                <img src="/static/logo.png" alt="fr24" width="auto" height="24">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/unidentified"><i class="bi bi-airplane-fill"
+                                style="padding-right: 5px;"></i>Unidentified</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history"><i class="bi bi-clock-history"
+                                style="padding-right: 5px;"></i>History</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-search" style="padding-right: 5px;"></i>Search
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item {% if mode == 'date' %}active{% endif %}" href="/search?mode=date"><i class="bi bi-calendar-week"
+                                        style="padding-right: 5px;"></i>By Date</a></li>
+                            <li><a class="dropdown-item {% if mode == 'custom' %}active{% endif %}" href="/search?mode=custom"><i class="bi bi-clipboard-data-fill"
+                                        style="padding-right: 5px;"></i>Custom Search</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/export_data"><i class="bi bi-floppy2"
+                                        style="padding-right: 5px;"></i>Export Data</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about"><i class="bi bi-h-square" style="padding-right: 5px;"></i>About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <div class="container">
+        <!-- ======================= Search panel ======================= -->
+        <div class="card search-panel mb-4">
+            <div class="card-header bg-white">
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        <a class="nav-link {% if mode == 'date' %}active{% endif %}" href="/search?mode=date">
+                            <i class="bi bi-calendar-week" style="padding-right: 5px;"></i>By Date</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if mode == 'custom' %}active{% endif %}" href="/search?mode=custom">
+                            <i class="bi bi-clipboard-data-fill" style="padding-right: 5px;"></i>Custom Search</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-body">
+                {% if mode == 'date' %}
+                <!-- -------- By Date -------- -->
+                <div class="mb-3">
+                    <div class="form-label">Quick range</div>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for key, label in [('hour','Last hour'), ('today','Today'), ('yesterday','Yesterday'),
+                                              ('24h','Last 24 h'), ('7d','Last 7 days'), ('30d','Last 30 days')] %}
+                        <a class="btn btn-sm btn-outline-secondary preset {% if args.get('preset') == key %}active{% endif %}"
+                           href="{{ url_for('search', mode='date', preset=key, sort=args.get('sort', 'last_desc')) }}">{{ label }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <form method="get" action="/search" class="row g-3 align-items-end">
+                    <input type="hidden" name="mode" value="date">
+                    <div class="col-md-3">
+                        <label class="form-label" for="start">From</label>
+                        <input type="datetime-local" class="form-control" id="start" name="start"
+                               value="{{ args.get('start', '') if not args.get('preset') else '' }}">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="end">To</label>
+                        <input type="datetime-local" class="form-control" id="end" name="end"
+                               value="{{ args.get('end', '') if not args.get('preset') else '' }}">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="sort-date">Sort by</label>
+                        <select class="form-select" id="sort-date" name="sort">
+                            {% include 'search_sort_options.html' %}
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-grid">
+                        <button type="submit" class="btn btn-accent"><i class="bi bi-search" style="padding-right: 5px;"></i>Search</button>
+                    </div>
+                    {% if first_record %}
+                    <div class="col-12 form-text mt-1">
+                        <i class="bi bi-info-circle" style="padding-right: 3px;"></i>Records available since {{ first_record }}
+                    </div>
+                    {% endif %}
+                </form>
+
+                {% else %}
+                <!-- -------- Custom Search -------- -->
+                <form method="get" action="/search">
+                    <input type="hidden" name="mode" value="custom">
+                    <input type="hidden" name="go" value="1">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                <input type="search" class="form-control" name="q" value="{{ args.get('q', '') }}"
+                                       placeholder="Search anything: ICAO, callsign, registration, airline, model…" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="icao">ICAO hex</label>
+                            <input type="text" class="form-control mono" id="icao" name="icao" placeholder="c058be"
+                                   value="{{ args.get('icao', '') }}">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="callsign">Callsign</label>
+                            <input type="text" class="form-control" id="callsign" name="callsign" placeholder="ACA123"
+                                   value="{{ args.get('callsign', '') }}">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="registration">Registration</label>
+                            <input type="text" class="form-control" id="registration" name="registration" placeholder="C-GHPT"
+                                   value="{{ args.get('registration', '') }}">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="airline">Airline (ICAO)</label>
+                            <input type="text" class="form-control" id="airline" name="airline" placeholder="ACA"
+                                   value="{{ args.get('airline', '') }}">
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="model">Model</label>
+                            <input type="text" class="form-control" id="model" name="model" placeholder="B788"
+                                   value="{{ args.get('model', '') }}">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="type">Aircraft type</label>
+                            <select class="form-select" id="type" name="type">
+                                <option value="">Any</option>
+                                {% for t in types %}
+                                <option value="{{ t }}" {% if args.get('type') == t %}selected{% endif %}>{{ t }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="country">Country</label>
+                            <select class="form-select" id="country" name="country">
+                                <option value="">Any</option>
+                                {% for code, name in countries %}
+                                <option value="{{ code }}" {% if args.get('country') == code %}selected{% endif %}>{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="sort-custom">Sort by</label>
+                            <select class="form-select" id="sort-custom" name="sort">
+                                {% include 'search_sort_options.html' %}
+                            </select>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="c-start">Seen from</label>
+                            <input type="datetime-local" class="form-control" id="c-start" name="start"
+                                   value="{{ args.get('start', '') }}">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label class="form-label" for="c-end">Seen until</label>
+                            <input type="datetime-local" class="form-control" id="c-end" name="end"
+                                   value="{{ args.get('end', '') }}">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-end gap-2">
+                            <button type="submit" class="btn btn-accent flex-grow-1"><i class="bi bi-search" style="padding-right: 5px;"></i>Search</button>
+                            <a href="/search?mode=custom" class="btn btn-outline-secondary"><i class="bi bi-x-lg" style="padding-right: 5px;"></i>Clear</a>
+                        </div>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- ======================= Results ======================= -->
+        {% if submitted %}
+        <div class="d-flex flex-wrap align-items-center justify-content-between results-bar mb-2">
+            <div>
+                <h5 class="mb-1"><i class="bi bi-radar" style="padding-right: 5px; color: #588157;"></i><b>{{ total }}</b>
+                    aircraft found</h5>
+                <div class="d-flex flex-wrap gap-1">
+                    {% if start or end %}
+                    <span class="badge rounded-pill text-bg-light border filter-chip">
+                        <i class="bi bi-calendar-range" style="padding-right: 3px;"></i>
+                        {{ start.strftime('%Y-%m-%d %H:%M') if start else 'beginning' }} → {{ end.strftime('%Y-%m-%d %H:%M') if end else 'now' }}
+                    </span>
+                    {% endif %}
+                    {% for key, label in [('q','Text'), ('icao','ICAO'), ('callsign','Callsign'), ('registration','Reg'),
+                                          ('airline','Airline'), ('model','Model'), ('type','Type'), ('country','Country')] %}
+                    {% if args.get(key) %}
+                    {% set val = args.get(key) %}
+                    <span class="badge rounded-pill text-bg-light border filter-chip">{{ label }}: {% if key == 'country' %}{{ (countries|selectattr(0, 'equalto', val)|map(attribute=1)|first) or val }}{% else %}{{ val }}{% endif %}</span>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% if total %}
+            <a class="btn btn-outline-success btn-sm" href="{{ url_for('search_export', **params) }}">
+                <i class="bi bi-filetype-csv" style="padding-right: 5px;"></i>Export results</a>
+            {% endif %}
+        </div>
+
+        {% if planes %}
+        <div class="table-responsive">
+            <table class="table table-hover table-striped results-table">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">ICAO</th>
+                        <th scope="col">Call Sign</th>
+                        <th scope="col">Airline</th>
+                        <th scope="col">Registration</th>
+                        <th scope="col">Aircraft</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">First Seen</th>
+                        <th scope="col">Last Seen</th>
+                        <th scope="col" class="text-end">Sightings</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plane in planes %}
+                    {% set d = plane.data %}
+                    <tr>
+                        <th scope="row" class="mono">{{ plane.icao24 }}</th>
+                        <td>{{ d[16] if d[16] else '—' }}</td>
+                        <td>
+                            {% if d[17] and d[17] != 'POE' %}
+                            <img src="https://images.planefinder.net/api/logo/{{ d[17] }}/h/30" alt="{{ d[17] }}"
+                                 width="auto" height="20" onerror="this.replaceWith(document.createTextNode('{{ d[17] }}'))">
+                            {% endif %}
+                        </td>
+                        <td>{{ d[18] }}</td>
+                        <td>
+                            {% if d[19] %}<span class="badge text-bg-secondary">{{ d[19] }}</span>{% endif %}
+                            {% if d[20] %}<span class="badge text-bg-success">{{ d[20] }}</span>{% endif %}
+                        </td>
+                        <td>
+                            {% if d[21] %}
+                            <img src="/static/flags/4x3/{{ d[21] }}.svg" alt="{{ d[21] }} flag" width="auto" height="18"
+                                 title="{{ d[22] }}" data-bs-toggle="tooltip">
+                            {% endif %}
+                        </td>
+                        <td>{{ plane.first_appeared }}</td>
+                        <td>{{ plane.last_appeared }}</td>
+                        <td class="text-end">{{ plane.sightings }}</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-secondary" target="_blank" title="FlightAware" data-bs-toggle="tooltip"
+                               href="http://flightaware.com/live/modes/{{ plane.icao24 }}/redirect"><i class="bi bi-box-arrow-up-right"></i></a>
+                            {% if d[18] %}
+                            <a class="btn btn-sm btn-outline-secondary" target="_blank" title="FR24 aircraft page" data-bs-toggle="tooltip"
+                               href="https://www.flightradar24.com/data/aircraft/{{ d[18]|lower }}"><i class="bi bi-airplane"></i></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% if total_pages > 1 %}
+        <div class="d-flex justify-content-center mt-3">
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item {% if page <= 1 %}disabled{% endif %}">
+                        <a class="page-link" href="{{ url_for('search', page=page-1, **params) }}">Previous</a>
+                    </li>
+                    {% if 1 not in page_range %}
+                    <li class="page-item"><a class="page-link" href="{{ url_for('search', page=1, **params) }}">1</a></li>
+                    {% if 2 not in page_range %}<li class="page-item disabled"><span class="page-link">…</span></li>{% endif %}
+                    {% endif %}
+                    {% for p in page_range %}
+                    <li class="page-item {% if p == page %}active{% endif %}">
+                        <a class="page-link" href="{{ url_for('search', page=p, **params) }}">{{ p }}</a>
+                    </li>
+                    {% endfor %}
+                    {% if total_pages not in page_range %}
+                    {% if total_pages - 1 not in page_range %}<li class="page-item disabled"><span class="page-link">…</span></li>{% endif %}
+                    <li class="page-item"><a class="page-link" href="{{ url_for('search', page=total_pages, **params) }}">{{ total_pages }}</a></li>
+                    {% endif %}
+                    <li class="page-item {% if page >= total_pages %}disabled{% endif %}">
+                        <a class="page-link" href="{{ url_for('search', page=page+1, **params) }}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <div class="text-center empty-state py-5">
+            <i class="bi bi-cloud-haze2"></i>
+            <h5 class="mt-3">No aircraft match this search</h5>
+            <p class="text-muted">Try a wider date range or fewer filters.</p>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <div class="text-center empty-state py-5">
+            <i class="bi bi-radar spinning-icon"></i>
+            <p class="text-muted mt-3">
+                {% if mode == 'date' %}Pick a quick range or set a From / To time to see which aircraft were detected.
+                {% else %}Fill in any filters, or just press Search to list everything recorded.{% endif %}
+            </p>
+        </div>
+        {% endif %}
+    </div>
+    <br><br>
+</body>
+<script>
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+</script>
+
+</html>

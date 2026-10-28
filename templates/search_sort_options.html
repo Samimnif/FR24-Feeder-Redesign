@@ -1,0 +1,3 @@
+{% for key, label in [('last_desc','Last seen (newest)'), ('first_desc','First seen (newest)'), ('first_asc','First seen (oldest)'), ('sightings_desc','Most sightings'), ('icao_asc','ICAO (A–Z)')] %}
+<option value="{{ key }}" {% if args.get('sort', 'last_desc') == key %}selected{% endif %}>{{ label }}</option>
+{% endfor %}

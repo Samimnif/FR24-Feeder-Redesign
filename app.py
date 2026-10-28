@@ -128,7 +128,7 @@ missing_icaos = {p['icao'] for p in _load_missing()}
 _pending_missing = []
 
 app = Flask(__name__)
-url = os.environ.get('FEEDER_URL', 'http://192.168.0.106:8754/flights.json')
+url = os.environ.get('FEEDER_URL', 'http://fr-pi24.local:8754/flights.json')
 
 # Initialize the BackgroundScheduler
 scheduler = BackgroundScheduler()
@@ -257,6 +257,166 @@ def flights():
 def history():
     return render_template('history.html', planes=get_planes_last_hour())
     # return jsonify(get_planes_last_hour())
+
+
+# ---------------------------------------------------------------- Search
+# The flight data is stored as a JSON array in plane_history.data:
+# [16] callsign, [17] airline ICAO, [18] registration, [19] model,
+# [20] aircraft type, [21] country alpha-2, [22] country name
+SEARCH_FIELDS = {
+    'callsign': 16, 'airline': 17, 'registration': 18,
+    'model': 19, 'type': 20, 'country': 21,
+}
+SEARCH_PER_PAGE = 50
+SORTS = {
+    'last_desc': 'last_appeared DESC',
+    'first_desc': 'first_appeared DESC',
+    'first_asc': 'first_appeared ASC',
+    'sightings_desc': 'sightings DESC, last_appeared DESC',
+    'icao_asc': 'icao24 ASC',
+}
+
+
+def _jx(idx):
+    return f"COALESCE(json_extract(data, '$[{idx}]'), '')"
+
+
+def _parse_dt(value):
+    """Accept 'YYYY-MM-DDTHH:MM' (datetime-local) or 'YYYY-MM-DD'."""
+    value = (value or '').strip()
+    for fmt in ("%Y-%m-%dT%H:%M", "%Y-%m-%d %H:%M", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(value, fmt)
+        except ValueError:
+            pass
+    return None
+
+
+def _date_range(args):
+    """Resolve preset or explicit from/to into (start, end) datetimes."""
+    now = datetime.now()
+    today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    presets = {
+        'hour': (now - timedelta(hours=1), now),
+        'today': (today, now),
+        'yesterday': (today - timedelta(days=1), today - timedelta(minutes=1)),
+        '24h': (now - timedelta(hours=24), now),
+        '7d': (now - timedelta(days=7), now),
+        '30d': (now - timedelta(days=30), now),
+    }
+    preset = args.get('preset', '')
+    if preset in presets:
+        return presets[preset]
+    start = _parse_dt(args.get('start'))
+    end = _parse_dt(args.get('end'))
+    if end is not None and len(args.get('end', '').strip()) == 10:
+        end = end + timedelta(days=1) - timedelta(minutes=1)  # whole day
+    return start, end
+
+
+def build_search(args):
+    where, params = [], []
+    start, end = _date_range(args)
+    if start:
+        where.append("timestamp >= ?");
+        params.append(start.strftime("%Y-%m-%d %H:%M"))
+    if end:
+        where.append("timestamp <= ?");
+        params.append(end.strftime("%Y-%m-%d %H:%M"))
+
+    icao = args.get('icao', '').strip().lower()
+    if icao:
+        where.append("icao24 LIKE ?");
+        params.append(f"%{icao}%")
+    for name, idx in SEARCH_FIELDS.items():
+        val = args.get(name, '').strip()
+        if val:
+            where.append(f"{_jx(idx)} LIKE ?");
+            params.append(f"%{val}%")
+
+    q = args.get('q', '').strip()
+    if q:
+        cols = ["icao24"] + [_jx(i) for i in (16, 17, 18, 19, 20, 22)]
+        where.append("(" + " OR ".join(f"{c} LIKE ?" for c in cols) + ")")
+        params.extend([f"%{q}%"] * len(cols))
+
+    clause = ("WHERE " + " AND ".join(where)) if where else ""
+    return clause, params, start, end
+
+
+def run_search(args, page=None):
+    clause, params, start, end = build_search(args)
+    order = SORTS.get(args.get('sort'), SORTS['last_desc'])
+    # Bare 'data' column with MAX(timestamp) returns the latest row's data (SQLite feature)
+    base = f"""SELECT icao24, MIN(timestamp) AS first_appeared, MAX(timestamp) AS last_appeared,
+                      COUNT(*) AS sightings, data
+               FROM plane_history {clause} GROUP BY icao24"""
+    with sqlite3.connect(DATABASE) as c:
+        total = c.execute(f"SELECT COUNT(*) FROM ({base})", params).fetchone()[0]
+        sql = f"{base} ORDER BY {order}"
+        if page is not None:
+            sql += f" LIMIT {SEARCH_PER_PAGE} OFFSET {(page - 1) * SEARCH_PER_PAGE}"
+        rows = c.execute(sql, params).fetchall()
+    planes = []
+    for r in rows:
+        try:
+            data = json.loads(r[4])
+        except (TypeError, ValueError):
+            data = []
+        data += [''] * (23 - len(data))
+        planes.append({'icao24': r[0], 'first_appeared': r[1], 'last_appeared': r[2],
+                       'sightings': r[3], 'data': data})
+    return planes, total, start, end
+
+
+def search_options():
+    """Distinct countries/airlines/types seen so far, for the dropdowns."""
+    with sqlite3.connect(DATABASE) as c:
+        countries = c.execute(f"""SELECT DISTINCT {_jx(21)}, {_jx(22)} FROM plane_history
+                                  WHERE {_jx(21)} != '' ORDER BY 2""").fetchall()
+        types = [r[0] for r in c.execute(f"""SELECT DISTINCT {_jx(20)} FROM plane_history
+                                             WHERE {_jx(20)} != '' ORDER BY 1""")]
+        first = c.execute("SELECT MIN(timestamp) FROM plane_history").fetchone()[0]
+    return countries, types, first
+
+
+@app.route('/search')
+def search():
+    mode = request.args.get('mode', 'date')
+    if mode not in ('date', 'custom'):
+        mode = 'date'
+    try:
+        page = max(1, int(request.args.get('page', 1)))
+    except ValueError:
+        page = 1
+    # Only run a query once the user has submitted something
+    submitted = any(request.args.get(k) for k in
+                    ['go', 'preset', 'start', 'end', 'q', 'icao', *SEARCH_FIELDS])
+    planes, total, start, end = run_search(request.args, page) if submitted else ([], 0, None, None)
+    total_pages = max(1, (total + SEARCH_PER_PAGE - 1) // SEARCH_PER_PAGE)
+    page_range = list(range(max(1, page - 2), min(total_pages, page + 2) + 1))
+    countries, types, first_record = search_options()
+    params = {k: v for k, v in request.args.items() if k != 'page' and v}
+    return render_template('search.html', mode=mode, planes=planes, total=total,
+                           page=page, total_pages=total_pages, page_range=page_range,
+                           submitted=submitted, start=start, end=end, args=request.args,
+                           params=params, countries=countries, types=types,
+                           first_record=first_record, sorts=SORTS)
+
+
+@app.route('/search/export')
+def search_export():
+    planes, _, _, _ = run_search(request.args)
+    out = StringIO()
+    w = csv.writer(out)
+    w.writerow(['ICAO', 'First Appeared', 'Last Appeared', 'Sightings', 'Callsign',
+                'Airline', 'Registration', 'Model', 'Type', 'Country'])
+    for p in planes:
+        d = p['data']
+        w.writerow([p['icao24'], p['first_appeared'], p['last_appeared'], p['sightings'],
+                    d[16], d[17], d[18], d[19], d[20], d[22]])
+    return Response(out.getvalue(), mimetype='text/csv',
+                    headers={"Content-disposition": "attachment; filename=search_results.csv"})
 
 
 @app.route('/unidentified', methods=['GET', 'POST'])
